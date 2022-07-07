@@ -1,0 +1,37 @@
+<form class="m-2" [formGroup]="companyForm" (ngSubmit)="onFormSubmit()" #formDir="ngForm" novalidate>  
+    <div class="form-group row"> <label class=" control-label col-md-12" for="comapanyName">Company Name</label>  
+        <div class="col-md-4"> <input class="form-control" type="text" formControlName="comapanyName"> </div> <span class="text-danger" *ngIf="companyForm.hasError('required', 'comapanyName') && formDir.submitted">  
+Company Name is required.  
+</span> </div>  
+    <div class="form-group row"> <label class=" control-label col-md-12" for="companyCEO">Company CEO</label>  
+        <div class="col-md-4"> <input class="form-control" type="text" formControlName="companyCEO"> </div> <span class="text-danger" *ngIf="companyForm.hasError('required', 'companyCEO') && formDir.submitted">  
+CEO Name is required.  
+</span> </div>  
+    <div class="form-group row"> <label class="control-label col-md-12" for="companyTurnover">Company Turnover</label>  
+        <div class="col-md-4"> <input class="form-control" type="text" formControlName="companyTurnover"> </div> <span class="text-danger" *ngIf="companyForm.hasError('required', 'companyTurnover') && formDir.submitted">  
+            Company Turnover is required  
+</span> 
+ </div>  
+
+    <div class="form-group row"> <label class="control-label col-md-12" for="companyWebsite">Company Website</label>  
+        <div class="col-md-4"> <input class="form-control" type="text" formControlName="companyWebsite"> </div> <span class="text-danger" *ngIf="companyForm.hasError('required', 'companyWebsite') && formDir.submitted">  
+Company Website is required  
+</span> </div>  
+<div class="form-group row"> <label class="control-label col-md-12" for="exchange">Exchange</label>  
+    <div class="col-md-4"> 
+        <select  class="form-control" formControlName="exchange"  >
+           <option [ngValue]="undefined" selected>Select Exchange</option>
+              <option value="BSE">
+                BSE
+              </option>
+              <option value="NSE">
+                NSE
+              </option>
+          </select>
+        </div> <span class="text-danger" *ngIf="companyForm.hasError('required', 'exchange') && formDir.submitted">  
+Exchange is required  
+</span> </div>  
+    <div class="form-group"> <button type="submit" class="btn btn-primary">Save</button> 
+        <a [routerLink]="['/']"><button type="submit" class="btn btn-warning ml-2">Cancel </button></a>        </div>  
+</form>  
+

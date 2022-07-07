@@ -1,0 +1,68 @@
+<div class="row mt-2 mr-2 col-md-12">
+     <div class="input-group col-md-2">
+        <select  class="custom-select" (change) = "getStocksByCompany()" [(ngModel)]="selectedCompany" >
+            <option [ngValue]="undefined" selected>All Companies</option>
+            <option *ngFor="let company of companyDropdown" [ngValue]=company.id>
+                    {{company.name}}
+            </option>
+        </select>
+        
+      </div> 
+      <div class="text-right  col-md-2">
+        <label>Max : {{max}}</label>
+      
+    </div>
+    <div class="text-right  col-md-2">
+        <label>Min : {{min}}</label>
+    </div>
+    <div class="text-right  col-md-2">
+      
+        <label>Avg : {{avg}}</label>
+    </div>
+    
+    <div class=" text-right col-md-4">
+        <a class="btn btn-primary" [routerLink]="['/addcompany']" role="button" >
+            Add Company
+          </a>
+           <a class="btn btn-primary ml-2" [routerLink]="['/addstock']" role="button" >Add Stock</a> 
+    </div>
+</div>
+
+<div class="m-3">
+<h1>Stocks</h1>  
+
+<div class="form-inline mt-2 mb-2">
+    
+    <label for="startdate" class="mr-2">Start Date</label>
+    <input class="form-control mr-sm-2" type="date" [(ngModel)]="startdate" placeholder="Start Date" aria-label="Start Date" >
+    <label for="enddate" class="mr-2">End Date</label>
+    <input class="form-control mr-sm-2" type="date" [(ngModel)]="enddate" placeholder="End Date" aria-label="End Date">
+<button class="btn btn-outline-success my-2 my-sm-0" (click)="filterByDate()" type="submit">Filter</button>
+
+<div class="text-right  col-md-6">
+<input class="form-control mr-sm-2" type="search" [(ngModel)]="searchCompany"  placeholder="Company Code" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchStocksByCompany()" type="submit">Search</button>
+</div>
+
+</div>
+
+<div>
+<p *ngIf="!stocksList"><em>Loading...</em></p>  
+<table class='table table-sm table-bordered' *ngIf="stocksList">  
+    <thead class="thead-light">  
+        <tr>  
+            <th>Price (In Crores)</th>  
+            <th>Date</th>  
+            <th>Time</th>           
+        </tr>  
+    </thead>  
+    <tbody>  
+        <tr *ngFor="let stock of stocksList">  
+            <td>{{ stock.price  }}</td>  
+            <td>{{ stock.createdDate | date:'shortDate'}}</td>  
+            <td>{{ stock.createdDate | date:'shortTime'}}</td>    
+        </tr>  
+    </tbody>  
+</table> 
+</div> 
+</div>

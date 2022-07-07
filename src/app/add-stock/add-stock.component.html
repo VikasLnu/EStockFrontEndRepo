@@ -1,0 +1,28 @@
+<form  [formGroup]="companyForm" (ngSubmit)="onFormSubmit()" #formDir="ngForm" novalidate>
+    
+    <div class="col-md-6 mb-2 mt-2">
+        <label class=" control-label" for="selectedCompany">Company</label>
+            <select  class="form-control"  formControlName="selectedCompany"  >
+                
+             <option [ngValue]="undefined"  disabled selected>Select Company</option>
+          <option *ngFor="let company of companyDropdown" [ngValue]=company.id>
+                  {{company.name}}
+          </option>
+      </select>
+
+      <span class="text-danger"  *ngIf="companyForm.hasError('required', 'selectedCompany') && formDir.submitted">
+       Please Select Company.
+        </span> 
+      </div>
+   <div class="col-md-6 mb-2" > 
+        <label class=" control-label" for="price">Price</label>
+        <input class="form-control" type="text" formControlName="price">
+        <span class="text-danger" *ngIf="companyForm.hasError('required', 'price') && formDir.submitted">
+            Price is required.
+</span> 
+</div>
+
+    <div class="form-group col-md-6"> <button type="submit" class="btn btn-primary">Save</button>
+        <a [routerLink]="['/']"><button type="submit" class="btn btn-warning ml-2">Cancel </button></a>
+        </div>
+</form>
