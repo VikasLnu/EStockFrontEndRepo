@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AddCompanyComponent } from './add-company/add-company.component';
 import { AddStockComponent } from './add-stock/add-stock.component';
-import { StockGridComponent } from './stock-grid/stock-grid.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CompanyService } from './Services/company.service';
 import { StockService } from './Services/stock.service';
@@ -17,8 +16,7 @@ import { StockService } from './Services/stock.service';
     AppComponent,
     HomeComponent,
     AddCompanyComponent,
-    AddStockComponent,
-    StockGridComponent,
+    AddStockComponent
     
   ],
   imports: [
